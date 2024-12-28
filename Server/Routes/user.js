@@ -9,7 +9,7 @@ const passport = require("passport")
 Router.route("/")
 .get(isLoggedIn,asynchWrap(allUser));
 Router.route("/logout")
-.get(asynchWrap(userLogout))
+.get(isLoggedIn,asynchWrap(userLogout))
 
 Router.route("/:id")
 .get(asynchWrap(userProfile))
