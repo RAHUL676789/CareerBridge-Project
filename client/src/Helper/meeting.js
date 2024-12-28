@@ -9,6 +9,7 @@ export const fetchUserDetail = async () => {
         let userData = await fetch(`${URL}/CareerBridge/user/${userid}`, {
             method: "GET",
             credentials: "include",
+            mode: "cors",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -51,6 +52,7 @@ export const fetchMeetingDetail = async (paramid) => {
         const response = await fetch(`${URL}/user/meetings/${paramid}`, {
             method: "GET",
             credentials: "include",
+            mode: "cors",
             headers: {
                 "Content-Type": "application/json",
             }
@@ -97,6 +99,7 @@ export const getAllRequestMeeting = async (paramid) => {
         const response = await fetch(`${URL}/user/meetings/request/${paramid}`, {
             method: "GET",
             credentials: "include",
+            mode: "cors",
             headers: {
                 "Content-Type": "application/json",
             }
@@ -145,6 +148,7 @@ export const getAllConfirmMeeting = async (paramid) => {
             const response = await fetch(`${URL}/user/meetings/confirm/${paramid}`, {
                 method: "GET",
                 credentials: "include",
+                mode: "cors",
                 headers: {
                     "Content-Type": "application/json",
                 }
@@ -194,6 +198,7 @@ export const getAllConfirmMeeting = async (paramid) => {
         const response = await fetch(`${URL}/user/meetings/track-Meetings/${paramid}`, {
             method: "GET",
             credentials: "include",
+            mode: "cors",
             headers: {
                 "Content-Type": "application/json",
             }
@@ -238,6 +243,7 @@ export const getAllConfirmMeeting = async (paramid) => {
             const response = await fetch(`${URL}/user/meetings/${meetingid}/${host}`, {
                 method: "delete",
                 credentials: "include",
+                mode: "cors",
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -277,6 +283,7 @@ export const getAllConfirmMeeting = async (paramid) => {
         const response = await fetch(`${URL}/user/meetings/cancel/${meetingId}`, {
             method: "post",
             credentials: "include",
+            mode: "cors",
             headers: {
                 "Content-Type": "application/json",
             },

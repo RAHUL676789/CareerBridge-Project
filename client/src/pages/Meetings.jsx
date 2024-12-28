@@ -191,6 +191,7 @@ const Meetings = () => {
             const response = await fetch(`${URL}/user/meetings/${meetingId}`, {
                 method: "post",
                 credentials: "include",
+                mode: "cors",
                 headers: {
                     "Content-Type": "application/json",
                 },

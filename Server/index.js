@@ -24,8 +24,10 @@ const dbUrl = process.env.DBURL;
 // CORS Configuration
 app.use(
   cors({
-    origin: process.env.FRONTENDURL, // Update with your frontend URL
-    credentials: true, // Allow cookies to be sent
+    origin: process.env.FRONTENDURL,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    credentials: true,
+    exposedHeaders: ["set-cookie"],
   })
 );
 
@@ -68,7 +70,7 @@ const sessionOptions = {
   store,
   secret: process.env.SECRET || "defaultsecret",
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: {
     expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
     maxAge: 7 * 24 * 60 * 60 * 1000,

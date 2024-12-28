@@ -87,6 +87,7 @@ const userProfile = () => {
       const userData = await fetch(`${URL}/CareerBridge/user/${id}`,{
         method:"GET",
         credentials: "include",
+        mode: "cors",
         headers: {
           "Content-Type": "application/json",
       },

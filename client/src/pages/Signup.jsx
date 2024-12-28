@@ -59,6 +59,7 @@ const Signup = () => {
          const response = await fetch(`${URL}/CareerBridge/user/signup`,{
           method:"post",
            credentials: "include",
+           mode: "cors",
            headers: {
             "Content-Type": "application/json",
         },

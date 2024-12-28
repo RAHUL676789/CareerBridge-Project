@@ -111,6 +111,7 @@ const Message = () => {
   const handleInputChange = debounce(async (inpVal) => {
     const response = await fetch(`${Url}/searchUser`, {
       method: "Post",
+      mode: "cors",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
@@ -140,6 +141,7 @@ const Message = () => {
 
       const response = await fetch(Url, {
         method: "GET",
+        mode: "cors",
         credentials: "include",
         headers: {
           "Content-Type": "application/json",

@@ -113,6 +113,7 @@ const Profile = () => {
             const userData = await fetch(`${URL}/CareerBridge/user/${id}`, {
                 method: "PATCH",
                  credentials: "include",
+                 mode: "cors",
                  headers: {
                     "Content-Type": "application/json",
                 },
@@ -176,6 +177,7 @@ const Profile = () => {
         try {
             const userData = await fetch(`${URL}/CareerBridge/user/${id}`,{
                 method:"GET",
+                mode: "cors",
                  credentials: "include",
                  headers: {
                     "Content-Type": "application/json",
@@ -282,6 +284,7 @@ const Profile = () => {
             const response = await fetch(`${URL}/CareerBridge/user/available/${id}`, {
                 method: "post",
                  credentials: "include",
+                 mode: "cors",
                  headers: {
                     "Content-Type": "application/json",
                 },

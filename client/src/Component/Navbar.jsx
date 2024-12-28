@@ -120,6 +120,7 @@ if(currUserId){
      const response = await fetch(`${URL}/CareerBridge/user/searchUser`, {
        method: "post",
        credentials:"include",
+       mode: "cors",
        headers:{
          "Content-Type":"application/json"
        },

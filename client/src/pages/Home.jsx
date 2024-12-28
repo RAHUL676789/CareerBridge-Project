@@ -92,7 +92,7 @@ const Home = () => {
       const response = await fetch(`${URL}/CareerBridge/user`, {
         method: "GET",
         credentials: "include",
-
+        mode: "cors",
         headers: {
           "Content-Type": "application/json",
         },
