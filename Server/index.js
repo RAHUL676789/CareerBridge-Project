@@ -66,16 +66,14 @@ store.on("error", (err) => {
 // Session Middleware
 const sessionOptions ={
   store,
-  secret:process.env.SECRET,
-  resave:false,
-  saveUninitialized:false,
-  cookie:{
-      maxAge: 7 * 24 * 60 * 60 * 1000, 
-      httpOnly:true,
-      secure: process.env.NODE_ENV === "production", // Only set in production
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-     
-  }
+    secret:process.env.SECRET,
+    resave:false,
+    saveUninitialized:true,
+    cookie:{
+        expires:Date.now()+7*24*60*60*1000,
+        maxAge:7*24*60*60*1000,
+        httpOnly:true
+    }
 }
 
 
