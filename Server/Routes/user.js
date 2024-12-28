@@ -7,9 +7,9 @@ const {isLoggedIn,isOwner,userValidation,availableValidaton} = require("../middl
 const passport = require("passport")
 
 Router.route("/")
-.get(isLoggedIn,asynchWrap(allUser));
+.get(asynchWrap(allUser));
 Router.route("/logout")
-.get(isLoggedIn,asynchWrap(userLogout))
+.get(asynchWrap(userLogout))
 
 Router.route("/:id")
 .get(asynchWrap(userProfile))
