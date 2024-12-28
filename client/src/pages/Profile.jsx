@@ -294,16 +294,21 @@ const Profile = () => {
 
             const result = await response.json();
             console.log(result);
-              console.log(result.data.available);
-            setAvailable((prev)=>{
-                return [...result.data.available]
-            })
-            setOpenPopUp(false);
+
+             
+            
+          
             if(result.success){
-               
+                setAvailable((prev)=>{
+                    return [...result.data.available]
+                })
+                setOpenPopUp(false);
+                toast.success("availablity set successfully")
+            }else{
+                toast.error(result.message);
             }
             
-            return toast.success("availablity set successfully")
+            return 
         }
     }
 
