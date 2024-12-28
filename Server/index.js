@@ -94,7 +94,8 @@ passport.deserializeUser(User.deserializeUser());
 
 
 app.use((req,res,next)=>{
-
+   console.log(req.user)
+   console.log(req.session);
   res.locals.currUser = req.user;
   next();
 })
