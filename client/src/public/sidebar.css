@@ -1,0 +1,97 @@
+.chat-options{
+    /* background-color: #C0C2C9; */
+    font-weight: 800;
+}
+
+.divider{
+    padding: 0.01rem;
+    width: 100%;
+    background-color: black;
+}
+
+.sidebar-container{
+    position: relative;
+}
+
+.conversations-users{
+    /* background-color: red; */
+    display: flex;
+   
+    justify-content: start;
+ 
+}
+
+.conv-container{
+    overflow-y: scroll;
+    height: calc(100vh - 110px);
+}
+.conv-container::-webkit-scrollbar{
+    display: none;
+}
+.msg-container h6{
+ line-height: 1;
+ margin: 0;
+
+}
+.msg-container p{
+    margin: 0;
+    line-height: 1;;
+ 
+}
+.msg-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.conversations-users:hover{
+background-color: rgb(223, 223, 209);
+border-radius: 0.1rem;
+cursor: pointer;
+}
+
+/* .searchUser{
+    position: absolute;
+    top: 5rem;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(40, 5, 4, 0.51);
+    
+} */
+
+.searchInput{
+border-radius: 0.21rem;
+padding: 0.35rem;
+outline: none;
+border: none;
+}
+
+.searchbox{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.unseenmsg{
+    background-color: green;
+    height: 25px;
+    width: 25px;
+    padding: 0.12rem;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.NoUser-ConverSation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.NoUser-Arrow{
+    transform: rotate(-40deg);
+    margin-bottom: 1rem;
+    font-weight: 100;
+}

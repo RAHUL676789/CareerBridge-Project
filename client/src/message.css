@@ -1,0 +1,310 @@
+
+
+.message-page {
+    height: calc(100vh - 100px);
+    position: relative;
+    width: 100%;
+   /* Space between '100vh', '-', and '70px' */
+    /* padding-left: 1rem; */
+ 
+}
+.addSearchUser{
+    position: absolute;
+    height: calc(100vh - 100px);
+    width: 100%;
+    position: absolute;
+    /* margin: 1rem; */
+    margin-top: 0;
+    text-align: center;
+    background-color: rgb(74, 75, 75,0.7);
+    display: flex;
+    justify-content: center;
+   z-index: 99999;
+ 
+}
+
+.msg-input{
+    position: absolute;
+    bottom: 0;
+}
+
+.inputSearchbox{
+    /* background-color: royalblue; */
+    width: 75%;
+    height: 50px;
+}
+
+.addConvUser{
+    /* background-color: red; */
+    width: 75%;
+    margin-top: 0.2rem;
+    padding-top: 0.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* border: 1px solid red; */
+   
+ 
+    
+   
+}
+
+.searchUser-container{
+    overflow-y: auto;
+    /* border: 1px solid red; */
+    height: 75%;
+    width: 75%;
+  
+ 
+}
+.searchUser-container::-webkit-scrollbar{
+    display: none;
+}
+
+.searchUser-Detail{
+   display: flex;
+   justify-content: start;
+   align-items: start;
+}
+
+.searchUser-Info{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    width: 90%;
+    /* background-color: red; */
+    padding-top: 0.1rem;
+    margin-top: 0.22rem;
+    margin-left: 0.22rem;
+    height: 100%;
+ 
+}
+
+.cross{
+    position: absolute;
+    right: 1rem;
+    cursor: pointer;
+}
+
+.searchUser-Info h5{
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.logoContainer{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(5, 52, 28,0.17);
+}
+
+.searchUser-Info p{
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+}
+.search-Avatar{
+    width: 10%;
+}
+.message-container {
+    height: calc(100vh - 100px);
+    width: inherit; /* Space between '100vh', '-', and '70px' */
+    /* padding-left: 1rem; */
+}
+
+.sidebar-container{
+    height: 100%;
+}
+
+
+.message-user{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    margin-left: 0.42rem;
+}
+
+
+.message-user span{
+    
+    line-height: 1;
+    font-weight: 600;
+}
+.message-user span:nth-child(2){
+    font-weight: 300;
+    line-height: 1;
+}
+
+.all-messages{
+    height: calc(100vh - 12rem);
+    width: 100%;
+    overflow-y: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.all-messages::-webkit-scrollbar{
+    display: none;
+}
+.msg-avatar{
+    padding: 0.23rem;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    height: 100%;
+
+}
+
+.currentUser-message{
+    margin-left: auto;
+    width: fit-content;
+    max-width: 240px;
+    background-color: rgb(15, 15, 15);
+    color: white; 
+    font-weight: lighter; 
+    line-height: 1; 
+    /* border-radius: 0.6rem; */
+
+}
+
+.main-container{
+    position: relative;
+}
+
+.media-container{
+    width: fit-content;
+    max-width: 300px;
+    max-height: 300px;
+    position: relative;
+    /* background-color: red; */
+}
+
+.media-container img,video,.msgBox,.videoBox{
+    height: 240px;
+    width: 240px;
+}
+
+.show-uploaded-files{
+    height: 85%;
+    width: 80%;
+    background-color: rgba(253, 253, 250, 0.786);
+    position: absolute;
+     margin: 1rem auto;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.receiver-message{
+    margin-right: auto;
+    width: fit-content;
+    max-width: 310px;
+    line-height: 1;
+    font-weight: lighter;
+    background-color: rgb(106, 180, 245);
+    color: black; 
+    /* border-radius: 0.6rem; */
+
+}
+.msg-user-detail{
+    height: 4rem;
+    background-color: rgb(233, 239, 239);
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    /* margin-left: 0.5rem; */
+   
+   
+
+}
+
+.three-dot{
+margin-left: auto;
+padding-right: 0.3rem;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
+
+.input-container{
+    height: 2rem;
+    position: relative;
+}
+
+
+.file-container{
+
+    position: absolute;
+    height: 90px;
+    width: 100px;
+    background-color: rgb(243, 241, 239);
+    top: -102px;
+    border-radius: 0.2rem;
+    
+}
+.file{
+    width: 5%;
+    
+}
+.inp{
+    width: 95%;
+}
+.inp input{
+    width: 90%;
+   outline: none;
+   border: none;
+}
+
+
+.uploadFiles{
+    position: absolute;
+    height: calc(100vh - 8rem);
+    width: inherit;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(74, 75, 75,0.17);
+    margin-top: 0.12rem;
+}
+
+.show-files{
+    position: absolute;
+    right: 0;
+    margin-left: auto;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+
+@media (max-width: 578px) {
+
+    .searchUser-Detail{
+      width: 100%;
+    }
+    .searchUser-container{
+         width: 100%;
+    }
+    .addConvUser{
+        width: 100%;
+    }
+    .search-Avatar{
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+  }

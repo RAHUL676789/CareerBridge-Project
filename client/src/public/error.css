@@ -1,0 +1,15 @@
+.Error-Handle-userAvailable{
+    width: 100%;
+    height: 100%;
+    color: rgb(189, 54, 54);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+
+}
+
+.Error-Handle-userAvailable h5{
+    font-size: 0.9rem;
+}
