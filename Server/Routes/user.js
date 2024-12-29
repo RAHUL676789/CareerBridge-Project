@@ -46,7 +46,7 @@ Router.route("/login")
 
         return res.status(200).json({
           message: 'Login successful',
-          data: user.toObject(),
+          data: user,
           success:true // Send user details if required
         });
       });
