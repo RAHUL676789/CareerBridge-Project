@@ -20,10 +20,7 @@ import JoinRoom from './pages/JoinRoom';
 function App() {
   const userID = localStorage.getItem("userId");
 
-  useEffect(() => {
-    // Event listener to handle page reload
-    window.location.replace('/');  
-  }, []) ;
+
 
   return (
     <>
