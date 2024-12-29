@@ -22,7 +22,10 @@ const Home = () => {
   const URL = import.meta.env.VITE_BACKEND_URL;
 
 
-
+  window.addEventListener('beforeunload', function (event) {
+    // Navigate to root ("/") when the page reloads
+    window.location.href = '/';
+  });
 
   // fetching user detail and making socket connection
 

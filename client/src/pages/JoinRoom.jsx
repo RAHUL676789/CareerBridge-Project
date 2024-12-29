@@ -13,6 +13,10 @@ const JoinRoom = () => {
    console.log(currUser);
 
   const myMeeting = async (element)=>{
+    window.addEventListener('beforeunload', function (event) {
+      // Navigate to root ("/") when the page reloads
+      window.location.href = '/';
+    });
     const appID = 410084672;
     const URL = import.meta.env.VITE_BACKEND_URL;
     const serverSecret = "c55312152dfe899a7fa85d6d42338883";
