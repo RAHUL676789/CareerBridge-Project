@@ -13,3 +13,30 @@
 .Error-Handle-userAvailable h5{
     font-size: 0.9rem;
 }
+
+
+.notfound{
+    height: 80vh;
+    width: 90%;
+    /* background-color: rgb(233, 143, 143); */
+    text-align: blue;
+    text-align: center;
+    display: flex;
+    margin: 1rem auto;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 5px 10px rgba(244, 67, 54, 0.5);
+}
+
+
+.notfoundButton button{
+    background-color: white;
+    color: white;
+    padding: 10px 40px ;
+    border-radius: 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    outline: noe;
+}
