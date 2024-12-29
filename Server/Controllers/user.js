@@ -162,6 +162,7 @@ module.exports.updateProfile = async(req,res,next)=>{
    
    const {id} = req.params;
    const {username,profilePic,charge,education} = req.body;
+   console.log(req.body ,"updation for user");
      if(!id){
       return res.status(400).json({error:true,message:"there is somthing error while updating profile"})
      }
