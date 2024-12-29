@@ -20,7 +20,17 @@ import JoinRoom from './pages/JoinRoom';
 function App() {
   const userID = localStorage.getItem("userId");
 
-
+  useEffect(() => {
+    // Check if the page is being reloaded
+    if (sessionStorage.getItem("reloading")) {
+      // If page is reloading, clear the reload flag and redirect to root
+      sessionStorage.removeItem("reloading");
+      window.location.replace('/');  // Redirect to root
+    } else {
+      // Set the reload flag to true before the page is reloaded
+      sessionStorage.setItem("reloading", "true");
+    }
+  }, []);
 
   return (
     <>
