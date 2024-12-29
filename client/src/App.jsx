@@ -22,19 +22,8 @@ function App() {
 
   useEffect(() => {
     // Event listener to handle page reload
-    const handleBeforeUnload = (event) => {
-      // Redirect to home page ("/") when page reloads
-      window.location.href = '/';
-    };
-
-    // Add event listener for page reload
-    window.addEventListener('beforeunload', handleBeforeUnload);
-
-    // Cleanup the event listener when the component is unmounted
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, []); // Empty dependency array means it runs once when the component mounts
+    window.location.replace('/');  
+  }, []) ;
 
   return (
     <>
