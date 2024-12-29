@@ -113,7 +113,7 @@ const Profile = () => {
         try {
 
             const userData = await fetch(`${URL}/CareerBridge/user/${id}`, {
-                method: "patch",
+                 method: "patch",
                  credentials: "include",
                  mode: "cors",
                  headers: {
