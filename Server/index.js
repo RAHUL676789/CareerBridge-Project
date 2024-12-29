@@ -16,7 +16,7 @@ const MongoStore = require("connect-mongo");
 // const Use= require("./Models/userSchema");
 const User = require("./Models/userSchema");
 const LocalStrategy = require("passport-local").Strategy;
-
+app.set('trust proxy', 1);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const dbUrl = process.env.DBURL;
