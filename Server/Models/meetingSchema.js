@@ -4,11 +4,11 @@ const {Schema} = mongoose;
 const meetingSchema = new Schema({
     host:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"user"
+        ref:"User"
     },
     participant:{
          type:mongoose.Schema.Types.ObjectId,
-        ref:"user"
+        ref:"User"
 
     },
     meetingURL :{
