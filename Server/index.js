@@ -88,7 +88,22 @@ app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.deserializeUser((username, done) => {
+  console.log('Deserializing User:', username); // Debug username
+  User.findOne({ username: username }, (err, user) => {
+    if (err) {
+      console.error('Error in deserialization:', err);
+      return done(err);
+    }
+    if (!user) {
+      console.warn('User not found during deserialization');
+      return done(null, false);
+    }
+    console.log('User found during deserialization:', user);
+    return done(null, user);
+  });
+});
+
 
 
 
