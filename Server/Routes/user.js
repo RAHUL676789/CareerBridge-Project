@@ -1,22 +1,18 @@
 
 const express = require("express");
-const Router = express.Router({margeParams:true});
-const { asynchWrap }= require("../Util/asynchWrap");
-const {signUpPost, login,allUser,userProfile,updateProfile,setAvailablity,deleteAvailablity,searchUser,userLogout} = require("../Controllers/user");
-const {isLoggedIn,isOwner,userValidation,availableValidaton} = require("../middleware")
+const Router = express.Router({ margeParams: true });
+const { asynchWrap } = require("../Util/asynchWrap");
+const { signUpPost, login, allUser, userProfile, updateProfile, setAvailablity, deleteAvailablity, searchUser, userLogout } = require("../Controllers/user");
+const { isLoggedIn, isOwner, userValidation, availableValidaton } = require("../middleware")
 const passport = require("passport")
 
 Router.route("/")
-.get(asynchWrap(allUser));
+  .get(asynchWrap(allUser));
 Router.route("/logout")
-.get(asynchWrap(userLogout))
-
-Router.route("/:id")
-.get(asynchWrap(userProfile))
-.post(isLoggedIn,isOwner,asynchWrap(updateProfile))
+  .get(asynchWrap(userLogout));
 
 Router.route("/signup")
-.post(userValidation,asynchWrap(signUpPost));
+  .post(userValidation, asynchWrap(signUpPost));
 
 Router.route("/login")
   .post((req, res, next) => {
@@ -38,16 +34,16 @@ Router.route("/login")
         }
         req.session.save((err) => {
           if (err) return next(err);
-         console.log(req.session);
-         console.log(req.user);
+          console.log(req.session);
+          console.log(req.user);
         });
 
-        
+
 
         return res.status(200).json({
           message: 'Login successful',
           data: user,
-          success:true // Send user details if required
+          success: true // Send user details if required
         });
       });
     })(req, res, next);
@@ -57,14 +53,18 @@ Router.route("/login")
 
 
 
+Router.route("/:id")
+  .get(asynchWrap(userProfile))
+  .post(isLoggedIn, isOwner, asynchWrap(updateProfile));
 
 Router.route("/available/:id")
-.post(isLoggedIn,isOwner,availableValidaton,asynchWrap(setAvailablity));
+  .post(isLoggedIn, isOwner, availableValidaton, asynchWrap(setAvailablity));
+
 Router.route("/:id/:availableId")
-.delete(isLoggedIn,isOwner,asynchWrap(deleteAvailablity));
+  .delete(isLoggedIn, isOwner, asynchWrap(deleteAvailablity));
 
 Router.route("/searchUser")
-.post(isLoggedIn,asynchWrap(searchUser));
+  .post(isLoggedIn, asynchWrap(searchUser));
 
 
 
