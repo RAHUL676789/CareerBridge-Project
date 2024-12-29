@@ -87,17 +87,8 @@ app.use(session(sessionOptions));
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
- // where is this user.id going? Are we supposed to access this anywhere?
-});
-
-// used to deserialize the user
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-      done(err, user);
-  });
-});
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
 
@@ -110,7 +101,10 @@ app.use((req,res,next)=>{
   res.locals.currUser = req.user;
   next();
 })
-
+app.get("/",(req,res,next)=>{
+  console.log("thi is req.user",req.user);
+  res.send("root route");
+})
 app.use("/CareerBridge/user", userRouter);
 app.use("/user/meetings", meetingRouter);
 
