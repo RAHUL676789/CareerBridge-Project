@@ -100,6 +100,8 @@ const Profile = () => {
         })
         if (profileData) {
             setIsloading(false);
+        }else{
+            setIsloading(false);
         }
     }
 
@@ -121,14 +123,19 @@ const Profile = () => {
             });
             const result = await userData.json();
             console.log("updation of profile", result);
-            if (result) {
+            if (result.success) {
+                toast.success(result.message)
                 setProfileUSer(result.data);
                 setIsloading(false);
                 setEditUserDetail(false);
                 setIsEdit(false);
+            }else{
+                toast.error(result.message);
+                setIsloading(false);
             }
         } catch (e) {
-
+                 toast.error(e.message || "unexpected error");
+                 setIsloading(false);
         }
 
     }
@@ -317,6 +324,9 @@ const Profile = () => {
 
 
 
+    const handleIsloading = ()=>{
+        setIsloading(false);
+    }
 
   
 
@@ -364,7 +374,7 @@ const Profile = () => {
                                     </div>
                                     <div className='inp-file border text-white d-flex justify-content-center align-items-center rounded '>
                                         <label htmlFor="picture" className='rounded' >{fileName ? fileName : "Upload A Profile Picture"}</label>
-                                        {isloading && <Loader />}
+                                        {isloading && <Loader handleIsloading={handleIsloading} />}
                                         <input type="file" id='picture' onChange={handleProfileUpdate} />
                                     </div>
 
@@ -419,7 +429,7 @@ const Profile = () => {
                                     <button className='btn btn-success' type='submit'> Save</button>
                                 </div>
 
-                                {isloading && <Loader />}
+                                {isloading && <Loader handleIsloading={handleIsloading}/>}
 
                             </form>
                         </div>
