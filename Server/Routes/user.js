@@ -13,7 +13,7 @@ Router.route("/logout")
 
 Router.route("/:id")
 .get(asynchWrap(userProfile))
-.patch(isLoggedIn,isOwner,asynchWrap(updateProfile))
+.post(isLoggedIn,isOwner,asynchWrap(updateProfile))
 
 Router.route("/signup")
 .post(userValidation,asynchWrap(signUpPost));

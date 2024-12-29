@@ -23,7 +23,7 @@ const dbUrl = process.env.DBURL;
 app.use(
   cors({
     origin: process.env.FRONTENDURL,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS","patch"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
     exposedHeaders: ["set-cookie"],
   })
