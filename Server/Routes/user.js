@@ -36,6 +36,11 @@ Router.route("/login")
         if (err) {
           return next(err);
         }
+        req.session.save((err) => {
+          if (err) return next(err);
+         console.log(req.session);
+         console.log(req.user);
+        });
 
         
 

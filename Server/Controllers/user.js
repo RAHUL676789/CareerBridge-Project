@@ -67,6 +67,11 @@ module.exports.signUpPost= async (req, res) => {
            if (err) {
                return next(err);
            }
+           req.session.save((err) => {
+            if (err) return next(err);
+           console.log(req.session);
+           console.log(req.user);
+          });
 
            return  res.status(200).json({"message":"user register successfully","data":newUser,"success":true});
           
