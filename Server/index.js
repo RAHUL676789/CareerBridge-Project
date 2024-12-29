@@ -87,23 +87,17 @@ app.use(session(sessionOptions));
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser((username, done) => {
-  console.log('Deserializing User:', username); // Debug username
-  User.findOne({ username: username }, (err, user) => {
-    if (err) {
-      console.error('Error in deserialization:', err);
-      return done(err);
-    }
-    if (!user) {
-      console.warn('User not found during deserialization');
-      return done(null, false);
-    }
-    console.log('User found during deserialization:', user);
-    return done(null, user);
-  });
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+ // where is this user.id going? Are we supposed to access this anywhere?
 });
 
+// used to deserialize the user
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+      done(err, user);
+  });
+});
 
 
 
