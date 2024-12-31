@@ -35,6 +35,7 @@ const Message = () => {
   const [inpVal, setInpVal] = useState("");
   const [filevalue, setShowUploadFiles] = useState(false);
   const [showUploadPopUp, setShowUploadPopUp] = useState(false);
+  const [loading,setLoading] = useState(false);
   const dispatch = useDispatch();
 
   const param = useParams();
@@ -70,7 +71,7 @@ const Message = () => {
   useEffect(() => {
     try {
       if (socketConnectionn) {
-
+        setLoading(true);
         socketConnectionn.emit("message-page", param.id)
         socketConnectionn.on("messageUser-data", (data) => {
           console.log("this is mesage user data", data);
@@ -87,7 +88,8 @@ const Message = () => {
         })
 
 
-      } else {
+      setLoading(false)
+    } else {
         socketConnect();
       }
     } catch (e) {
@@ -181,18 +183,18 @@ const Message = () => {
     setSearch((prev) => !prev);
   }
 
-  const [isloading, setIsloading] = useState(false)
+ 
 
   const uploadFiles = async (e) => {
     try {
-      setIsloading(true)
+      setLoading(true)
       setShowUploadFiles(true);
       let file = e.target.files[0];
       let response = await uploadFile(file);
       console.log(response);
       if (response) {
         console.log("this is upload popu bnd");
-        setIsloading(false);
+        setLoading(true)
        
         setNewMessage((prev) => {
           return {
@@ -207,7 +209,7 @@ const Message = () => {
 
     } catch (e) {
       toast.error("there is something error while uploading file");
-      setIsloading(false);
+      setLoading(true)
       
     }
   }
@@ -327,7 +329,7 @@ const Message = () => {
 
     <div className='message-page '>
      
-
+     {loading && <Loader/>}
       {search && <div className='addSearchUser'>
         <div className='cross' onClick={handleSearchChange}>
           <RxCross1 size={30} />

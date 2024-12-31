@@ -155,7 +155,9 @@ const userProfile = () => {
       console.log("socketConnetion not available");
       setLoading(false);
     }
-   }catch(e){
+
+    setLoading(false)
+  }catch(e){
     toast.error("there is someting error while scheduleing meeting ");
     setLoading(false);
    }
