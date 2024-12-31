@@ -144,7 +144,7 @@ const Home = () => {
 
  
   return (
-    <div>
+    <div className="main">
      
       <main>
         {loading && <Loader/>}
@@ -153,7 +153,7 @@ const Home = () => {
             users?.map((user, idx) => (
              <UserCard user = {user} key={idx} handleMessageClick={handleMessageClick}/>
 
-            )) : <div>
+            )) : <div >
               <Error message={"No User found "} />
             </div>}
         </div>

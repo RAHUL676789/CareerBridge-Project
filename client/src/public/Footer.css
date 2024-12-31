@@ -1,18 +1,19 @@
 .footer{
     /* border: 1px solid black; */
-    /* height: 100px; */
+    /* height: 150px; */
     width: 100%;
     margin: 0;
     display: flex;
     justify-content: center;
     /* align-content: center; */
     flex-direction: column;
-    background: #171717;
+    background: #6b6f71;
+    /* border-radius: 20px; */
   
 }
 
 .footer-container{
-   
+ 
     width: 100%;
     text-align: center;
 }
@@ -36,11 +37,13 @@
 
 
 .follow{
-    background-color: white;
+   
     padding: 7.5px 28px;
     border-radius: 20px;
     color: black;
     font-weight: bold;
+    background-color: rgb(249, 249, 249);
+    color: purple;
 }
 
 
@@ -57,7 +60,7 @@
 
 .socia-link::before {
     content: '';
-    background: #ff574a;
+    background: purple;
     width: 100%;
     height: 100%;
     position: absolute;

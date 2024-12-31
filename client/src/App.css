@@ -226,9 +226,22 @@ Form.Control:focus{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: auto;
   /* background-color: rgb(147, 144, 141); */
   /* border: 2px solid black; */
 }
+
+.main{
+  
+  /* border: 10px solid black; */
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100vh;
+  margin-bottom:auto ;
+  /* padding: 0.15rem; */
+}
+
 
 .singleUser{
   height: 300px;

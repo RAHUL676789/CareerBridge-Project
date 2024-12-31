@@ -4,7 +4,7 @@ import { MdError } from "react-icons/md";
 
 const Error = ({message}) => {
   return (
-    <div>
+    <div className='error'>
          <MdError size={50}/>
          <h5>{message}</h5>
       

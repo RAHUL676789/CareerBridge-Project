@@ -160,7 +160,7 @@ const Navbar = () => {
 
           <div className="mx-2">
 
-            <Link className="text-white text-decoration-none fw-bold" to="/about">About</Link>
+            <Link className="text-white text-decoration-none fw-bold " to="/about">About</Link>
 
           </div>
 
