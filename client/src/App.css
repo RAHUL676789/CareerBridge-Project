@@ -358,7 +358,12 @@ Avatar page css */
   align-items: start;
   height: 100%;
   padding: 0.33rem;
+  overflow-x: auto;
   /* background-color: #245e6e; */
+}
+
+.userEmails::-webkit-scrollbar{
+  display: none;
 }
 
 .userEmails span{

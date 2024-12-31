@@ -6,7 +6,7 @@ import { SiGooglemeet } from "react-icons/si";
 import { FcEngineering } from "react-icons/fc";
 import toast from 'react-hot-toast';
 import { IoSchool } from "react-icons/io5";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaTrophy } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import { useDispatch, useSelector } from 'react-redux';
 import uploadFile from '../Helper/uploadfile';
@@ -262,9 +262,12 @@ const Profile = () => {
   
 
     const handleAvailSubmit = async (e) => {
+        try{
+
+        
         e.preventDefault();
         e.stopPropagation();
-         
+        setIsloading(true); 
         const startArray= startTime.split(":");
         const curredate = new Date();
         const currenttimeinhours = curredate.getHours();
@@ -273,6 +276,7 @@ const Profile = () => {
 
         if( currenttimeinhours > startArray[0]  ){
             toast.error("time should be valid for availablity")
+            setIsloading(false);
             return;
         }
 
@@ -288,8 +292,10 @@ const Profile = () => {
 
         if (differenceInMinutes < 30 || !startTime || !endTime) {
              toast.error("availablity must be greather than 30 minutes")
+             setIsloading(false);
              return;
         } else {
+           
             const response = await fetch(`${URL}/CareerBridge/user/available/${id}`, {
                 method: "post",
                  credentials: "include",
@@ -311,6 +317,7 @@ const Profile = () => {
             
           
             if(result.success){
+                setIsloading(false);
                 setAvailable((prev)=>{
                     return [...result.data.available]
                 })
@@ -318,9 +325,16 @@ const Profile = () => {
                 toast.success("availablity set successfully")
             }else{
                 toast.error(result.message);
+                setIsloading(false);
             }
             
             return 
+        }
+    
+        }catch(e){
+            toast.error(e.message || "unexpected error");
+            setIsloading(false);
+        
         }
     }
 
@@ -336,9 +350,10 @@ const Profile = () => {
         <div className="container-fluid mx-0 px-0 py-2">
       
      
-             {isloading && <Loader/>}
+             
 
             <div className='row gap-2 px-2 mt-2 profileData  '>
+            {isloading && <Loader/>}
                 <div className='col-md-4 border rounded bg-light '>
                     <div className='profileDetails  '>
                         <div className='profilePicture px-1'>
@@ -376,7 +391,7 @@ const Profile = () => {
                                     </div>
                                     <div className='inp-file border text-white d-flex justify-content-center align-items-center rounded '>
                                         <label htmlFor="picture" className='rounded' >{fileName ? fileName : "Upload A Profile Picture"}</label>
-                                        {isloading && <Loader handleIsloading={handleIsloading} />}
+                                       
                                         <input type="file" id='picture' onChange={handleProfileUpdate} />
                                     </div>
 
@@ -431,7 +446,7 @@ const Profile = () => {
                                     <button className='btn btn-success' type='submit'> Save</button>
                                 </div>
 
-                                {isloading && <Loader handleIsloading={handleIsloading}/>}
+                              
 
                             </form>
                         </div>

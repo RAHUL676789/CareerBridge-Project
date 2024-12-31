@@ -4,52 +4,14 @@ import { useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import Error from './Error';
 
-const UserAvailable = ({availableArray}) => {
+const UserAvailable = ({availableArray,handleMeetinRequest}) => {
   const currUser = useSelector((state)=>state.currentUser);
   const param = useParams();
   const userID = localStorage.getItem("userId");
   const socketConnectionn = useSelector((state) => state.currentUser.socketConnection);
   const sortedArray = availableArray.sort((a, b) => new Date(a.day) - new Date(b.day));
-    const handleMeetinRequest = (meetinId)=>{
-        console.log("meeting function run");
-
-        if(!userID){
-          toast.error("you are not login please login")
-          return;
-        }
-     
-       try{
-        if(socketConnectionn){
-          console.log("socketconnection available")
-          let payload = {
-            host:param.id,
-            participant:userID,
-            availableId : meetinId
-          }
-    
-          socketConnectionn.emit("schedule-meeting",(payload));
-          socketConnectionn.on("meeting-request-receiving",(data)=>{
-                
-                 if(data.success){
-                  alert(data.message)
-                  dispatch(setUserMeetings(data.data));
-                 }
-                 
-          })
-    
-          socketConnectionn.on("meeting-request-sending",(data)=>{
-            toast.success("meeting request has been send successfully");
-          })
-    
-        }else{
-          console.log("socketConnetion not available");
-        }
-       }catch(e){
-        console.log("there is someting error while scheduleing meeting ",e);
-       }
-    
-    
-      }
+  
+  
 
 
       const groupByDate = sortedArray.reduce((acc,curr)=>{
