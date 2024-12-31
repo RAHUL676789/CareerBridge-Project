@@ -226,7 +226,7 @@ Form.Control:focus{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: auto;
+  margin-bottom: 2rem;
   /* background-color: rgb(147, 144, 141); */
   /* border: 2px solid black; */
 }
