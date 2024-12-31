@@ -10,6 +10,7 @@ import Error from "../Component/Error";
 import UserCard from "../Component/UserCard";
 import { useNavigate } from "react-router-dom";
 import Loader from "../Component/Loader";
+import Footer from "../Component/Footer";
 
 
 const Home = () => {
@@ -156,6 +157,9 @@ const Home = () => {
               <Error message={"No User found "} />
             </div>}
         </div>
+       <div className="footer-container">
+       <Footer/>
+       </div>
       </main>
     </div>
   );

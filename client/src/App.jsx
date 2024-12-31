@@ -17,6 +17,7 @@ import Message from './pages/Message';
 import Meetings from './pages/Meetings';
 import JoinRoom from './pages/JoinRoom';
 import NotFound from './pages/NotFound';
+import About from './pages/About';
 
 function App() {
   const userID = localStorage.getItem("userId");
@@ -31,6 +32,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path='/about' element={<About/>} />
             <Route path='/signup' element={<Singup />} />
             <Route path='/login' element={<Login />} />
             <Route path='/user/:id' element={<UserProfile />} />
