@@ -157,12 +157,12 @@ const userProfile = () => {
     }
 
     setLoading(false)
-  }catch(e){
+   }catch(e){
     toast.error("there is someting error while scheduleing meeting ");
     setLoading(false);
    }
 
-
+   setLoading(false); 
   }
   return (
     <div className=" m-0 p-0">
