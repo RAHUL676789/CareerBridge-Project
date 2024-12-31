@@ -187,14 +187,14 @@ const Message = () => {
 
   const uploadFiles = async (e) => {
     try {
-      setLoading(true)
+      
       setShowUploadFiles(true);
       let file = e.target.files[0];
       let response = await uploadFile(file);
       console.log(response);
       if (response) {
         console.log("this is upload popu bnd");
-        setLoading(true)
+       
        
         setNewMessage((prev) => {
           return {
@@ -209,7 +209,7 @@ const Message = () => {
 
     } catch (e) {
       toast.error("there is something error while uploading file");
-      setLoading(true)
+  
       
     }
   }
