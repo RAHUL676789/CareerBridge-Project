@@ -14,6 +14,7 @@ import { useSocketConnect } from '../Helper/socketConncetion';
 import Navbar from '../Component/Navbar';
 import { setUserMeetings } from '../feature/users/CurrentUser';
 import Loader from '../Component/Loader';
+
 const userProfile = () => {
 
   // const {socketConnect} = useSocketConnect();
@@ -116,7 +117,7 @@ const userProfile = () => {
     getUsersDetails(param.id);
   }, [param.id]);
 
-
+  const userID = localStorage.getItem("userId");
   const handleMeetinRequest = (meetinId)=>{
 
     console.log("meeting function run");
@@ -124,6 +125,7 @@ const userProfile = () => {
 
     if(!userID){
       toast.error("you are not login please login")
+      setLoading(false);
       return;
     }
  
