@@ -207,6 +207,7 @@ const Message = () => {
 
     } catch (e) {
       toast.error("there is something error while uploading file");
+      setIsloading(false);
       
     }
   }

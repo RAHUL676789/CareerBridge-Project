@@ -12,6 +12,7 @@ import { FaVideo } from "react-icons/fa6";
 import Error from "./Error";
 import { FaArrowUpLong } from "react-icons/fa6";
 import { CiCirclePlus } from "react-icons/ci";
+import Loader from "./Loader";
 
 const Sidebar = ({ changeSearch, parmaId }) => {
  
@@ -19,11 +20,13 @@ const Sidebar = ({ changeSearch, parmaId }) => {
   const currUser = useSelector((state) => state.currentUser);
   const [converSationsUser, setConverSationsUser] = useState([]);
   const navigate = useNavigate();
+  const [loading,setLoading] = useState(false);
 
   useEffect(() => {
     try {
       if (socketConnectionn) {
         console.log("hello");
+        setLoading(true);
         socketConnectionn.emit("getConversationUser", currUser.id);
         socketConnectionn.on("allConveSationUsers", (data) => {
           console.log("allConveSationUsers", data);
@@ -48,6 +51,7 @@ const Sidebar = ({ changeSearch, parmaId }) => {
           });
 
           setConverSationsUser(currentConverSationUsers);
+          setLoading(false);
         });
       } else {
         console.log("else condition run");
@@ -56,11 +60,13 @@ const Sidebar = ({ changeSearch, parmaId }) => {
       }
     } catch (e) {
       console.log("there is something wrong", e);
+      setLoading(false);
     }
   }, [socketConnectionn, currUser]); // Add socketConnect to the dependency array
 
   return (
     <div className="row bg-white h-100">
+      {loading && <Loader/>}
       <div className="col-md-2  chat-container h-100 p-0 d-none d-md-block ">
         <div className="chat-options h-25 d-flex flex-column justify-content-center align-items-center">
           <BsChatTextFill size={24} className="primary m-0 my-1 text-white" title="chats" />

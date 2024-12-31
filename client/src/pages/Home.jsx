@@ -9,6 +9,7 @@ import Error from "../Component/Error";
 
 import UserCard from "../Component/UserCard";
 import { useNavigate } from "react-router-dom";
+import Loader from "../Component/Loader";
 
 
 const Home = () => {
@@ -17,15 +18,11 @@ const Home = () => {
   const users = useSelector((state) => state.user);
   const userID = localStorage.getItem("userId");
   const socketConnection = useSelector((state) => state.currentUser.socketConnection);
+  const [loading,setLoading] = useState(false);
 
 
   const URL = import.meta.env.VITE_BACKEND_URL;
 
-
-  window.addEventListener('beforeunload', function (event) {
-    // Navigate to root ("/") when the page reloads
-    window.location.href = '/';
-  });
 
   // fetching user detail and making socket connection
 
@@ -92,6 +89,7 @@ const Home = () => {
 
   const getUsersDetails = async () => {
     try {
+      setLoading(true);
       const response = await fetch(`${URL}/CareerBridge/user`, {
         method: "GET",
         credentials: "include",
@@ -107,14 +105,16 @@ const Home = () => {
       console.log(result);
       if (result.success) {
         toast.success(result.message);
+        setLoading(false);
         dispatch(setUsers(result.data));
       } else {
 
         console.log(result);
         toast.error(result.message);
+        setLoading(false);
       }
     } catch (e) {
-      
+      setLoading(false);
       toast.error("Unable to fetch user details");
 
     }
@@ -146,8 +146,9 @@ const Home = () => {
     <div>
      
       <main>
+        {loading && <Loader/>}
         <div className="allUsers">
-          {users?.length > 0 ?
+          {users?.length > 0 && !loading?
             users?.map((user, idx) => (
              <UserCard user = {user} key={idx} handleMessageClick={handleMessageClick}/>
 

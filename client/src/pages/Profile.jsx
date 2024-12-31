@@ -182,6 +182,7 @@ const Profile = () => {
 
     const getUsersDetails = async (id) => {
         try {
+            setIsloading(true);
             const userData = await fetch(`${URL}/CareerBridge/user/${id}`,{
                 method:"GET",
                 mode: "cors",
@@ -193,7 +194,7 @@ const Profile = () => {
             const result = await userData.json();
           
             setProfileUSer(result.data);
-           
+            setIsloading(false);
             setAvailable((prev)=>{
                 return [...result.data.available]
             })
@@ -201,6 +202,7 @@ const Profile = () => {
 
         } catch (e) {
             console.log(e);
+            setIsloading(false);
         }
 
     }
@@ -334,7 +336,7 @@ const Profile = () => {
         <div className="container-fluid mx-0 px-0 py-2">
       
      
-
+             {isloading && <Loader/>}
 
             <div className='row gap-2 px-2 mt-2 profileData  '>
                 <div className='col-md-4 border rounded bg-light '>

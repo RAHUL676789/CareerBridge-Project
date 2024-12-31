@@ -13,10 +13,12 @@ import UserAvailable from '../Component/UserAvailable';
 import { useSocketConnect } from '../Helper/socketConncetion';
 import Navbar from '../Component/Navbar';
 import { setUserMeetings } from '../feature/users/CurrentUser';
+import Loader from '../Component/Loader';
 const userProfile = () => {
 
   // const {socketConnect} = useSocketConnect();
   const socketconnection = useSelector((state)=>state.currentUser.socketconnection);
+  const [loading,setLoading] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     if (socketconnection) {
@@ -84,6 +86,7 @@ const userProfile = () => {
 
   const getUsersDetails = async (id) => {
     try {
+      setLoading(true);
       const userData = await fetch(`${URL}/CareerBridge/user/${id}`,{
         method:"GET",
         credentials: "include",
@@ -95,6 +98,7 @@ const userProfile = () => {
       const result = await userData.json();
       console.log(result);
       setProfileUSer(result.data);
+      setLoading(false);
       
       setAvailable((prev)=>{
         return [...result.data.available]
@@ -104,6 +108,7 @@ const userProfile = () => {
 
     } catch (e) {
       console.log(e);
+      setLoading(false);
     }
 
   }
@@ -113,7 +118,7 @@ const userProfile = () => {
   return (
     <div className=" m-0 p-0">
      
-      
+      {loading && <Loader/>}
 
 
       <div className='row gap-2   mt-2 profileData '>

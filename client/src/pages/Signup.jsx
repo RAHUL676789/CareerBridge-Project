@@ -45,54 +45,67 @@ const Signup = () => {
     // handling signup detail submit
 
     const handleSubmit = async(event)=>{
-         const form = event.currentTarget;
-         event.preventDefault();
-         if(form.checkValidity() === false){
-            event.stopPropagation();
-            setValidated(true);
-            return false;
-           
-         }
-         setValidated(true);
-         console.log(formdata);
+        try{
+          
+          const form = event.currentTarget;
+          event.preventDefault();
+          if(form.checkValidity() === false){
+             event.stopPropagation();
+             setValidated(true);
+             return false;
+            
+          }
 
-         const response = await fetch(`${URL}/CareerBridge/user/signup`,{
-          method:"post",
-           credentials: "include",
-           mode: "cors",
-           headers: {
-            "Content-Type": "application/json",
-        },
-          body:JSON.stringify(formdata)
-         });
-
-         const result = await response.json();
-         console.log("thisiis the signup result",result);
-
-        
-         if(result.error){
-             toast.error(result.message);
-        
-             navigate("/signup")
-         }else{
-          localStorage.setItem("userId",result.data._id);
-          dispatch(setCurrentUser(result.data));
-          toast.success(result.message);
-          navigate("/")
-         }
+          
+          setValidated(true);
+         
+          console.log(formdata);
+          setLoading(true)
+          const response = await fetch(`${URL}/CareerBridge/user/signup`,{
+           method:"post",
+            credentials: "include",
+            mode: "cors",
+            headers: {
+             "Content-Type": "application/json",
+         },
+           body:JSON.stringify(formdata)
+          });
+ 
+          const result = await response.json();
+          console.log("thisiis the signup result",result);
+ 
+         
+          if(result.error){
+              toast.error(result.message);
+                setLoading(false);
+              navigate("/signup")
+          }else{
+           localStorage.setItem("userId",result.data._id);
+           dispatch(setCurrentUser(result.data));
+           toast.success(result.message);
+           setLoading(false);
+           navigate("/")
+          }
+        }catch(e){
+          toast.error(e.message || "unexpected error")
+          setLoading(false);
+        }
       
          
     }
 
-   
+  
     
   return (
-    <div className='container mt-5  flex justify-center items-center py-4 relative'>
+    <div className='container mt-5  flex justify-center items-center  '>
+   {loading && 
+      <Loader />
+     }
      
-      <div className='singupHeading text-primary '><h4>SignUp For CareerBridge !</h4></div>
+      <div className='singupHeading text-primary  '><h4>SignUp For CareerBridge !</h4></div>
       
-      <div className='row justify-content-center primary mt-3 '>
-      
+      <div className='row justify-content-center primary position-relative '>
+    
         <Form noValidate validated={validated} onSubmit={handleSubmit} >
           <Row className='col-lg-12 mb-4'>
             <Form.Group controlId='validationCustom01' as={Col} lg={6} className='col-12 mb-3'>

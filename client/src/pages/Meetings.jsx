@@ -106,6 +106,7 @@ const Meetings = () => {
             }
         } catch (e) {
             toast.error(e.message);
+            setisLoading(false);
            
         }
 
@@ -133,6 +134,7 @@ const Meetings = () => {
         } catch (e) {
           
             toast.error(e.message);
+            setisLoading(false);
         }
 
     }
@@ -164,6 +166,7 @@ const Meetings = () => {
         } catch (e) {
            
             toast.error(e.message);
+            setisLoading(false);
         }
     }
 
@@ -224,9 +227,11 @@ const Meetings = () => {
 
             }else{
                 toast.error(result.message);
+                setisLoading(false);
             }
         } catch (e) {
             toast.error(e.message);
+            setisLoading(false);
 
         }
 
@@ -248,10 +253,12 @@ const Meetings = () => {
                 dispatch(setMeetingDetails(meetinresult))
             } else {
                 toast.error(meetinresult.message || "unexpexted error")
+                setisLoading(false);
             }
 
         }else{
                toast.error(meetingresult.message)
+               setisLoading(false);
         }
 
 

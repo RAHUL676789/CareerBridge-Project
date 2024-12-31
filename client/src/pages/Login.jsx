@@ -9,10 +9,12 @@ import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentUser } from '../feature/users/CurrentUser';
+import Loader from '../Component/Loader';
 
 
 const Login = () => {
   const [validated, setValidated] = useState(false);
+  const [islaoding,setIsloading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formdata, setFormData] = useState({
@@ -48,7 +50,7 @@ const Login = () => {
 
       }
       setValidated(true);
-
+      setIsloading(true);
       const response = await fetch(`${URL}/CareerBridge/user/login`, {
         method: "post",
         credentials: "include",
@@ -62,26 +64,31 @@ const Login = () => {
       const result = await response.json();
       if (result.error) {
         toast.error(result.message);
-
+        setIsloading(false);
         navigate("/login");
       }
       else {
         localStorage.setItem("userId", result.data._id);
         toast.success(result.message);
-
+           setIsloading(false);
         dispatch(setCurrentUser(result.data));
 
         navigate("/");
       }
     } catch (e) {
-      toast.error(e);
+      toast.error(e.message || "unexpected error");
+      setIsloading(false);
     }
 
   }
+
+
+  
   return (
     <div className='container primary mt-2'>
       <div className='singupHeading'><h4>Login For CareerBridge !</h4></div>
       <div className='row justify-content-center primary mt-3 '>
+       {islaoding && <Loader /> }
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Row className='col-lg-12 mb-4'>
             <Form.Group controlId='customContol01' as={Col} lg={12} className='col-12 mb-3' >
