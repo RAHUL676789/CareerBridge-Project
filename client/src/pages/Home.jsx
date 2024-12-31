@@ -157,10 +157,11 @@ const Home = () => {
               <Error message={"No User found "} />
             </div>}
         </div>
-       <div className="footer-container">
+      
+      </main>
+      <div className="footer-container">
        <Footer/>
        </div>
-      </main>
     </div>
   );
 };
