@@ -188,13 +188,15 @@ const Message = () => {
 
   const uploadFiles = async (e) => {
     try {
-      
+      console.log("uploadfile rund ")
+      setLoading(true)
       setShowUploadFiles(true);
       let file = e.target.files[0];
       let response = await uploadFile(file);
       console.log(response);
       if (response) {
         console.log("this is upload popu bnd");
+        setLoading(false)
        
        
         setNewMessage((prev) => {
@@ -209,7 +211,8 @@ const Message = () => {
 
 
     } catch (e) {
-      toast.error("there is something error while uploading file");
+      setLoading(false)
+      toast.error("there is something error while uploading file",e);
   
       
     }
@@ -401,7 +404,7 @@ const Message = () => {
 
                   <div className="media-container">
                     <div className=''>
-                      {isloading && <Loader />}
+                      {loading && <Loader />}
                     </div>
 
                     {newMessage.imageUrl && <img src={newMessage.imageUrl}
