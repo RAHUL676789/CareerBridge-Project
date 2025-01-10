@@ -107,6 +107,7 @@ const Message = () => {
 
   const handleFileTouch = (e) => {
     e.stopPropagation();
+    e.preventDefault();
     setShowUploadPopUp(true)
   }
 
